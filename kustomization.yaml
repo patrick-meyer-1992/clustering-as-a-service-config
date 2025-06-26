@@ -1,0 +1,8 @@
+resources:
+  - services/common
+  - services/rabbitmq
+  - services/redis
+  - services/mongodb
+  - services/api
+  - services/clustering_worker
+  - services/streamlit
