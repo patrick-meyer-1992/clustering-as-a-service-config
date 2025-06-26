@@ -2,8 +2,6 @@ resources:
 - deployment.yaml
 
 images:
-- name: patrickmeyer/caas-clustering-worker
-  newTag: PLACEHOLDER
 - name: patrickmeyer/clustering-worker
   newName: patrickmeyer/caas-clustering-worker
   newTag: e340bfb

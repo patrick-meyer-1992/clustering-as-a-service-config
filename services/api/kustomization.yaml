@@ -5,7 +5,5 @@ images:
 - name: patrickmeyer/api
   newName: patrickmeyer/caas-api
   newTag: e340bfb
-- name: patrickmeyer/caas-fastapi
-  newTag: PLACEHOLDER
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
