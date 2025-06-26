@@ -4,5 +4,5 @@ resources:
   - services/redis
   - services/mongodb
   - services/api
-  - services/clustering_worker
+  - services/clustering-worker
   - services/streamlit
