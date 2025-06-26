@@ -24,18 +24,9 @@ spec:
         envFrom:
         - configMapRef:
             name: caas-config
-        env:
-        - name: RABBITMQ_NODENAME
-          value: "rabbit@rabbitmq"
-        volumeMounts:
-        - name: rabbitmq-lib
-          mountPath: /var/lib/rabbitmq
-        - name: rabbitmq-log
-          mountPath: /var/log/rabbitmq
-        - name: erlang-cookie
-          mountPath: /var/lib/rabbitmq/.erlang.cookie
-          subPath: .erlang.cookie
-          readOnly: true
+        # env:
+        # - name: RABBITMQ_NODENAME
+        #   value: "rabbit@rabbitmq"
         livenessProbe:
           exec:
             command:
@@ -61,20 +52,6 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-        securityContext:
-          runAsUser: 999
-          runAsGroup: 999
-      volumes:
-      - name: rabbitmq-lib
-        persistentVolumeClaim:
-          claimName: rabbitmq-lib-pvc
-      - name: rabbitmq-log
-        persistentVolumeClaim:
-          claimName: rabbitmq-log-pvc
-      - name: erlang-cookie
-        configMap:
-          name: rabbitmq-erlang-cookie
-          defaultMode: 0600
 
 ---
 apiVersion: v1

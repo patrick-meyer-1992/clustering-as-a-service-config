@@ -27,7 +27,7 @@ spec:
             name: caas-config
         volumeMounts:
         - name: api-volume
-          mountPath: /app/api
+          mountPath: /caas/api
         resources:
           requests:
             memory: "256Mi"
@@ -38,7 +38,7 @@ spec:
       volumes:
       - name: api-volume
         hostPath:
-          path: /app/api
+          path: /caas/api
           type: Directory
 
 ---
