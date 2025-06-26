@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: clustering-worker
-        image: patrickmeyer/caas-clustering-worker:latest
+        image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:

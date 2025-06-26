@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fastapi
-        image: patrickmeyer/caas-fastapi:latest # Will be replaced by kustomize
+        image: patrickmeyer/caas-fastapi # Will be replaced by kustomize
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
