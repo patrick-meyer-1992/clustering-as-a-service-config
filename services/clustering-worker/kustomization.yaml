@@ -1,6 +1,11 @@
 resources:
-  - deployment.yaml
+- deployment.yaml
 
 images:
-  - name: patrickmeyer/caas-clustering-worker
-    newTag: PLACEHOLDER
+- name: patrickmeyer/caas-clustering-worker
+  newTag: PLACEHOLDER
+- name: patrickmeyer/clustering-worker
+  newName: patrickmeyer/caas-clustering-worker
+  newTag: e340bfb
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
