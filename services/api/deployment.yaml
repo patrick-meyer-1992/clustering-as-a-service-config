@@ -21,13 +21,10 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
-        command: ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--reload"]
+        command: ["uvicorn", "api.main:app", "--host", "0.0.0.0"]
         envFrom:
         - configMapRef:
             name: caas-config
-        volumeMounts:
-        - name: api-volume
-          mountPath: /caas/api
         resources:
           requests:
             memory: "256Mi"
@@ -35,11 +32,6 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "500m"
-      volumes:
-      - name: api-volume
-        hostPath:
-          path: /caas/api
-          type: Directory
 
 ---
 apiVersion: v1
