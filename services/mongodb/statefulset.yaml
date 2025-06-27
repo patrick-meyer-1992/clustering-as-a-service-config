@@ -27,7 +27,7 @@ spec:
             name: caas-config
         volumeMounts:
         - name: mongodb-data
-          mountPath: /caas/data/db
+          mountPath: /data/db
         - name: mongodb-config
           mountPath: /docker-entrypoint-initdb.d
         resources:
