@@ -4,7 +4,7 @@ resources:
 images:
 - name: patrickmeyer/caas-api
   newName: patrickmeyer/caas-api
-  newTag: c0e3800
+  newTag: 70aaa06
 - name: patrickmeyer/caas-fastapi
   newName: patrickmeyer/caas-fastapi
   newTag: 69f98a5
