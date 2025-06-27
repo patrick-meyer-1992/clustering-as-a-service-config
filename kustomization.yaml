@@ -6,3 +6,4 @@ resources:
   - services/api
   - services/clustering-worker
   - services/streamlit
+  - ingress/staging
