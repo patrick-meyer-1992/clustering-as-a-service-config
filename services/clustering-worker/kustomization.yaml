@@ -5,8 +5,5 @@ images:
 - name: patrickmeyer/caas-clustering-worker
   newName: patrickmeyer/caas-clustering-worker
   newTag: 44aa306
-- name: patrickmeyer/clustering-worker
-  newName: patrickmeyer/caas-clustering-worker
-  newTag: e340bfb
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
