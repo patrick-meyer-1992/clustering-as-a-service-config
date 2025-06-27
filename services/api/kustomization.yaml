@@ -2,11 +2,14 @@ resources:
 - deployment.yaml
 
 images:
-- name: patrickmeyer/fastapi
-  newName: patrickmeyer/caas-fastapi
-  newTag: e340bfb
+- name: patrickmeyer/caas-api
+  newName: patrickmeyer/caas-api
+  newTag: 70aaa06
 - name: patrickmeyer/caas-fastapi
   newName: patrickmeyer/caas-fastapi
   newTag: 69f98a5
+- name: patrickmeyer/fastapi
+  newName: patrickmeyer/caas-fastapi
+  newTag: e340bfb
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
