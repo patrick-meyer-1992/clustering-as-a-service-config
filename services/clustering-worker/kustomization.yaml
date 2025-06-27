@@ -4,7 +4,7 @@ resources:
 images:
 - name: patrickmeyer/caas-clustering-worker
   newName: patrickmeyer/caas-clustering-worker
-  newTag: 3c21dff
+  newTag: 44aa306
 - name: patrickmeyer/clustering-worker
   newName: patrickmeyer/caas-clustering-worker
   newTag: e340bfb

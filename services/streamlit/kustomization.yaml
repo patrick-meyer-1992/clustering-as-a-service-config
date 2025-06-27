@@ -4,7 +4,7 @@ resources:
 images:
 - name: patrickmeyer/caas-streamlit
   newName: patrickmeyer/caas-streamlit
-  newTag: 3c21dff
+  newTag: 44aa306
 - name: patrickmeyer/streamlit
   newName: patrickmeyer/caas-streamlit
   newTag: e340bfb
