@@ -24,7 +24,7 @@ spec:
         envFrom:
         - configMapRef:
             name: caas-config
-        # env:
+        env:
         # - name: RABBITMQ_NODENAME
         #   value: "rabbit@rabbitmq"
         - name: RABBITMQ_DEFAULT_USER
