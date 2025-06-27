@@ -27,6 +27,12 @@ spec:
         # env:
         # - name: RABBITMQ_NODENAME
         #   value: "rabbit@rabbitmq"
+        - name: RABBITMQ_DEFAULT_USER
+          value: guest
+        - name: RABBITMQ_DEFAULT_PASS
+          value: guest
+        - name: RABBITMQ_DEFAULT_VHOST
+          value: /
         livenessProbe:
           exec:
             command:
