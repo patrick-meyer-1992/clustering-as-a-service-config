@@ -1,6 +1,7 @@
 resources:
 - deployment.yaml
 - scaling.yaml
+- rabbitmq-auth.yaml
 
 images:
 - name: patrickmeyer/caas-clustering-worker
