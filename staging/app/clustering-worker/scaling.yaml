@@ -16,7 +16,7 @@ spec:
     metadata:
       protocol: amqp
       host: amqp://guest:guest@rabbitmq-service:5672/
-      queueName: clustering_jobs  # Your actual queue name
+      queueName: default  # Your actual queue name
       queueLength: '1'  # Target queue length per pod
       # Optional: Add these for better control
       # excludeUnacknowledged: 'false'  # Include unacked messages
