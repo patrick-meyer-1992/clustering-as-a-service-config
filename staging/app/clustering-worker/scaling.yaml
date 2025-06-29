@@ -16,7 +16,7 @@ spec:
     metadata:
       protocol: amqp
       host: amqp://guest:guest@10.152.183.252:5672/
-      queueName: default  # Your actual queue name
+      queueName: celery  # Your actual queue name
       queueLength: '1'  # Target queue length per pod
       # Optional: Add these for better control
       # excludeUnacknowledged: 'false'  # Include unacked messages
