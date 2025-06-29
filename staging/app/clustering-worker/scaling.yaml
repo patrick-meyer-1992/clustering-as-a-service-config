@@ -21,5 +21,3 @@ spec:
       # Optional: Add these for better control
       # excludeUnacknowledged: 'false'  # Include unacked messages
       # vhostName: '/'  # Virtual host name
-    authenticationRef:
-      name: rabbitmq-auth  # Reference to authentication secret
