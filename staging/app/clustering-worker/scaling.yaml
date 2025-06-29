@@ -1,0 +1,25 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: clustering-worker-scaler
+  namespace: staging
+spec:
+  scaleTargetRef:
+    name: clustering-worker
+  pollingInterval: 30  # Check queue every 30 seconds
+  cooldownPeriod: 300  # Wait 5 minutes before scaling down
+  idleReplicaCount: 1  # Scale to 1 when no messages
+  minReplicaCount: 1   # Minimum pods when scaling
+  maxReplicaCount: 50  # Maximum pods
+  triggers:
+  - type: rabbitmq
+    metadata:
+      protocol: amqp
+      host: amqp://guest:guest@rabbitmq-service:5672/
+      queueName: clustering_jobs  # Your actual queue name
+      queueLength: '1'  # Target queue length per pod
+      # Optional: Add these for better control
+      # excludeUnacknowledged: 'false'  # Include unacked messages
+      # vhostName: '/'  # Virtual host name
+    authenticationRef:
+      name: rabbitmq-auth  # Reference to authentication secret

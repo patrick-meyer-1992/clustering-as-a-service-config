@@ -1,9 +1,10 @@
 resources:
-  - services/common
-  - services/rabbitmq
-  - services/redis
-  - services/mongodb
-  - services/api
-  - services/clustering-worker
-  - services/streamlit
-  - ingress/staging
+  - staging/app/common
+  - staging/app/rabbitmq
+  - staging/app/redis
+  - staging/app/mongodb
+  - staging/app/api
+  - staging/app/clustering-worker
+  - staging/app/streamlit
+  - staging/ingress
+  - keda
