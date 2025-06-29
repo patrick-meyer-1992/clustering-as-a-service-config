@@ -15,7 +15,7 @@ spec:
   - type: rabbitmq
     metadata:
       protocol: amqp
-      host: amqp://guest:guest@rabbitmq-service:5672/
+      host: amqp://guest:guest@10.152.183.252:5672/
       queueName: default  # Your actual queue name
       queueLength: '1'  # Target queue length per pod
       # Optional: Add these for better control
