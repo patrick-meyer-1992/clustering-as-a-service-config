@@ -5,7 +5,7 @@ metadata:
   namespace: staging
 type: Opaque
 data:
-  host: YW1xcDovL2d1ZXN0Omd1ZXN0QDEwLjE1Mi4xODMuMjUyOjU2NzIv=  # base64 encoded
+  host: YW1xcDovL2d1ZXN0Omd1ZXN0QDEwLjE1Mi4xODMuMjUyOjU2NzIv  # base64 encoded
 ---
 apiVersion: keda.sh/v1alpha1
 kind: TriggerAuthentication
