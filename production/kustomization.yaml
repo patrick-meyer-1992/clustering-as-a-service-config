@@ -1,0 +1,9 @@
+resources:
+  - app/common
+  - app/rabbitmq
+  - app/redis
+  - app/mongodb
+  - app/api
+  - app/clustering-worker
+  - app/streamlit
+  - ingress
