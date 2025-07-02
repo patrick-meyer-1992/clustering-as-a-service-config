@@ -1,0 +1,10 @@
+resources:
+- deployment.yaml
+- scaling.yaml
+
+images:
+- name: patrickmeyer/caas-clustering-worker
+  newName: patrickmeyer/caas-clustering-worker
+  newTag: c9254ca
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

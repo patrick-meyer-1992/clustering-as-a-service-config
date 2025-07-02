@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clustering-worker
+  namespace: prod
+  labels:
+    app: clustering-worker
+spec:
+  replicas: 0  # KEDA will manage replicas
+  selector:
+    matchLabels:
+      app: clustering-worker
+  template:
+    metadata:
+      labels:
+        app: clustering-worker
+    spec:
+      containers:
+      - name: clustering-worker
+        image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: caas-config
+        env:
+        - name: RABBITMQ_URL
+          value: "amqp://guest:guest@rabbitmq-service:5672/"
+        - name: QUEUE_NAME
+          value: "clustering_jobs"
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        # Faster startup for scale-from-zero
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 15"]  # Shorter grace period
+      terminationGracePeriodSeconds: 30  # Shorter grace period

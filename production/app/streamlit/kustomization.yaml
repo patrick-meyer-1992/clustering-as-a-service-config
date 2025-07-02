@@ -1,0 +1,9 @@
+resources:
+- deployment.yaml
+
+images:
+- name: patrickmeyer/caas-streamlit
+  newName: patrickmeyer/caas-streamlit
+  newTag: c9254ca
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
