@@ -1,0 +1,10 @@
+resources:
+- deployment.yaml
+- scaling.yaml
+
+images:
+- name: patrickmeyer/caas-automl-worker
+  newName: patrickmeyer/caas-automl-worker
+  newTag: c9254ca
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization

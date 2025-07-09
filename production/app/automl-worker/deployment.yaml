@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clustering-worker
+  name: automl-worker
   namespace: prod
   labels:
-    app: clustering-worker
+    app: automl-worker
 spec:
   replicas: 0  # KEDA will manage replicas
   selector:
     matchLabels:
-      app: clustering-worker
+      app: automl-worker
   template:
     metadata:
       labels:
-        app: clustering-worker
+        app: automl-worker
     spec:
       containers:
-      - name: clustering-worker
-        image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
+      - name: automl-worker
+        image: patrickmeyer/caas-automl-worker # Will be replaced by kustomize
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
@@ -26,7 +26,7 @@ spec:
         - name: RABBITMQ_URL
           value: "amqp://guest:guest@rabbitmq-service:5672/"
         - name: QUEUE_NAME
-          value: "celery"
+          value: "automl"
         resources:
           requests:
             memory: "512Mi"
