@@ -5,6 +5,8 @@ metadata:
   namespace: prod
   labels:
     app: automl-worker
+  annotations:
+    argocd.argoproj.io/sync-options: IgnoreExtraneous
 spec:
   replicas: 0  # KEDA will manage replicas
   selector:

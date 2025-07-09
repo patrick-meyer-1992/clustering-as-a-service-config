@@ -5,6 +5,8 @@ metadata:
   namespace: staging
   labels:
     app: clustering-worker
+  annotations:
+    argocd.argoproj.io/sync-options: IgnoreExtraneous
 spec:
   replicas: 0  # KEDA will manage replicas
   selector:
