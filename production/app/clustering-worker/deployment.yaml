@@ -6,7 +6,7 @@ metadata:
   labels:
     app: clustering-worker
 spec:
-  replicas: 0  # KEDA will manage replicas
+  replicas: 1  # KEDA will manage replicas
   selector:
     matchLabels:
       app: clustering-worker
