@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-options: Prune=false,RespectIgnoreDifferences=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
-  # replicas: 0  # KEDA will manage replicas
+  replicas: 1  # KEDA will manage replicas
   selector:
     matchLabels:
       app: clustering-worker
