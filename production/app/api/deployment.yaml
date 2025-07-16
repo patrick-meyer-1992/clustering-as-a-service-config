@@ -16,22 +16,22 @@ spec:
         app: fastapi
     spec:
       containers:
-      - name: fastapi
-        image: patrickmeyer/caas-api # Will be replaced by kustomize
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8000
-        command: ["uvicorn", "api.main:app", "--host", "0.0.0.0"]
-        envFrom:
-        - configMapRef:
-            name: caas-config
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        - name: fastapi
+          image: patrickmeyer/caas-api # Will be replaced by kustomize
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          command: ["uvicorn", "api.main:app", "--host", "0.0.0.0"]
+          envFrom:
+            - configMapRef:
+                name: caas-config
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
@@ -43,7 +43,34 @@ spec:
   selector:
     app: fastapi
   ports:
-  - protocol: TCP
-    port: 8000
-    targetPort: 8000
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
   type: ClusterIP
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fastapi-hpa
+  namespace: prod
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fastapi
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50
