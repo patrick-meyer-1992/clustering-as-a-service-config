@@ -27,10 +27,10 @@ spec:
                 name: caas-config
           resources:
             requests:
-              memory: "256Mi"
+              memory: "512Mi"
               cpu: "250m"
             limits:
-              memory: "512Mi"
+              memory: "1024Mi"
               cpu: "500m"
 
 ---
@@ -89,4 +89,4 @@ spec:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 30
+          averageUtilization: 50
