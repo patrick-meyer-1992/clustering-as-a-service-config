@@ -31,11 +31,17 @@ data = {
     },
 }
 
-iterations = 100
+iterations = 1000
 sleep_time = 0.1
 for i in range(iterations):
     algorithm = random.choice(algorithms)
-    clustering_params = requests.get(f"{FASTAPI_URL}/parameters/{algorithm}/").json()["clustering_params"]
+    response = requests.get(f"{FASTAPI_URL}/parameters/{algorithm}/")
+    if response.status_code == 200:
+        clustering_params = response.json()["clustering_params"]
+    else: 
+        print(f"Error fetching parameters for {algorithm}: {response.text}")
+        continue
+
     if "n_clusters" in clustering_params:
         clustering_params["n_clusters"] = 8
     data["clustering_algorithm"] = algorithm
@@ -44,5 +50,8 @@ for i in range(iterations):
     print(f"Iteration {i + 1}/{iterations} with algorithm: {algorithm}")
 
     res = requests.post(f"{FASTAPI_URL}/job/", json=data)
-    print(res.text)
+    if res.status_code == 200:
+        print(f"Job submitted successfully: {res.text}")
+    else:
+        print(f"Failed to submit job: {res.status_code}")
     sleep(sleep_time)
