@@ -7,7 +7,7 @@ metadata:
     app: clustering-worker
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: RespectIgnoreDifferences=true
 spec:
   replicas: 0  # KEDA will manage replicas
   selector:
