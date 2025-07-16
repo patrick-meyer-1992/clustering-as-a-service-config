@@ -7,8 +7,9 @@ metadata:
     app: clustering-worker
   annotations:
     argocd.argoproj.io/sync-options: IgnoreExtraneous
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
-  # replicas: 1  # KEDA will manage replicas
+  replicas: 1  # KEDA will manage replicas
   selector:
     matchLabels:
       app: clustering-worker
