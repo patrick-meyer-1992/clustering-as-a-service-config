@@ -27,4 +27,4 @@ data:
   FASTAPI_PROTOCOL: "http"
 
   # Flower Configuration
-  FLOWER_URL: "http://flower:5555"
+  FLOWER_URL: "http://flower-service:5555"
