@@ -22,8 +22,7 @@ spec:
       - name: flower
         image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
         imagePullPolicy: IfNotPresent
-        command: ["celery"]
-        args: ["-A", "workers.tasks", "flower", "--port=5555"]
+        command: ["celery", "-A", "workers.tasks", "flower", "--port=5555"]
         envFrom:
         - configMapRef:
             name: caas-config
