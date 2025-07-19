@@ -7,4 +7,5 @@ resources:
   - app/clustering-worker
   - app/automl-worker
   - app/streamlit
+  - app/flower
   - ingress

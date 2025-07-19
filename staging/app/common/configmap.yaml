@@ -26,3 +26,5 @@ data:
   FASTAPI_PORT: "8000"
   FASTAPI_PROTOCOL: "http"
 
+  # Flower Configuration
+  FLOWER_URL: "http://flower:5555"
