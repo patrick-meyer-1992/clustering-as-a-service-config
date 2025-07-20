@@ -11,28 +11,29 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
 spec:
   ingressClassName: nginx
   rules:
-  # FastAPI service - staging API
-  - host: api.staging.caas.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: fastapi-service
-            port:
-              number: 8000
-  # Streamlit service - staging frontend
-  - host: app.staging.caas.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: streamlit-service
-            port:
-              number: 8501
+    # FastAPI service - staging API
+    - host: api.staging.caas.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fastapi-service
+                port:
+                  number: 8000
+    # Streamlit service - staging frontend
+    - host: app.staging.caas.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: streamlit-service
+                port:
+                  number: 8501

@@ -11,35 +11,29 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://your-domain.com"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-headers: "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
-    # Add TLS certificate management (uncomment when you have certificates)
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
 spec:
   ingressClassName: nginx
-  # tls:
-  # - hosts:
-  #   - api.your-domain.com
-  #   - app.your-domain.com
-  #   secretName: production-tls
   rules:
-  # FastAPI service - production API
-  - host: api.caas.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: fastapi-service
-            port:
-              number: 8000
-  # Streamlit service - production frontend
-  - host: app.caas.local
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: streamlit-service
-            port:
-              number: 8501
+    # FastAPI service - production API
+    - host: api.caas.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fastapi-service
+                port:
+                  number: 8000
+    # Streamlit service - production frontend
+    - host: app.caas.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: streamlit-service
+                port:
+                  number: 8501
