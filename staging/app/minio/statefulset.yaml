@@ -27,6 +27,8 @@ spec:
           ports:
             - containerPort: 9000
               name: minio-api
+            - containerPort: 9001
+              name: minio-console
           env:
             - name: MINIO_ROOT_USER
               valueFrom:
