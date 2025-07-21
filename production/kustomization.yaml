@@ -3,6 +3,7 @@ resources:
   - app/rabbitmq
   - app/redis
   - app/mongodb
+  - app/minio
   - app/api
   - app/clustering-worker
   - app/automl-worker

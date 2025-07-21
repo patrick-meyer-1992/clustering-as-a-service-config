@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: minio
-  namespace: staging
+  namespace: prod
   labels:
     app: minio
 spec:
@@ -23,12 +23,10 @@ spec:
             - /bin/bash
             - -c
           args:
-            - minio server --console-address ":9001" /data
+            - minio server /data
           ports:
             - containerPort: 9000
               name: minio-api
-            - containerPort: 9001
-              name: minio-console
           env:
             - name: MINIO_ROOT_USER
               valueFrom:
