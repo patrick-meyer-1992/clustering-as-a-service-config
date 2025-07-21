@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minio
+  name: minio-service
   namespace: staging
   labels:
     app: minio
@@ -10,6 +10,25 @@ spec:
   ports:
     - port: 9000
       targetPort: 9000
+      protocol: TCP
+      name: minio
+  selector:
+    app: minio
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-nodeport
+  namespace: staging
+  labels:
+    app: minio
+spec:
+  type: NodePort
+  ports:
+    - port: 9001
+      targetPort: 9001
+      nodePort: 30002
       protocol: TCP
       name: minio
   selector:
