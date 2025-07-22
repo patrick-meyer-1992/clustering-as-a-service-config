@@ -26,7 +26,7 @@ spec:
                 name: caas-config
           env:
             - name: STREAMLIT_SERVER_MAX_UPLOAD_SIZE
-              value: 2048
+              value: "2048"
           resources:
             requests:
               memory: "512Mi"
