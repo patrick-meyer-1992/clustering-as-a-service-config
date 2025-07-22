@@ -25,6 +25,17 @@ spec:
           envFrom:
             - configMapRef:
                 name: caas-config
+          env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: accesskey
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio-secret
+                  key: secretkey
           resources:
             requests:
               memory: "256Mi"
