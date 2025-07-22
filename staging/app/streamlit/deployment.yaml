@@ -16,21 +16,24 @@ spec:
         app: streamlit
     spec:
       containers:
-      - name: streamlit
-        image: patrickmeyer/caas-streamlit # Will be replaced by kustomize
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8501
-        envFrom:
-        - configMapRef:
-            name: caas-config
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "500m"
+        - name: streamlit
+          image: patrickmeyer/caas-streamlit # Will be replaced by kustomize
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
+          envFrom:
+            - configMapRef:
+                name: caas-config
+          environment:
+            - name: STREAMLIT_SERVER_MAX_UPLOAD_SIZE
+              value: 2048
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
@@ -42,9 +45,9 @@ spec:
   selector:
     app: streamlit
   ports:
-  - protocol: TCP
-    port: 8501
-    targetPort: 8501
+    - protocol: TCP
+      port: 8501
+      targetPort: 8501
   type: ClusterIP
 
 ---
@@ -57,8 +60,8 @@ spec:
   selector:
     app: streamlit
   ports:
-  - protocol: TCP
-    port: 8501
-    targetPort: 8501
-    nodePort: 30501
+    - protocol: TCP
+      port: 8501
+      targetPort: 8501
+      nodePort: 30501
   type: NodePort

@@ -10,17 +10,17 @@ data:
   RABBITMQ_DEFAULT_USER: "guest"
   RABBITMQ_DEFAULT_PASS: "guest"
   RABBITMQ_DEFAULT_VHOST: /
-  RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: '-rabbit loopback_users []'
-  
+  RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: "-rabbit loopback_users []"
+
   # Redis Configuration
   REDIS_HOST: "redis-service"
   REDIS_PORT: "6379"
-  
+
   # MongoDB Configuration
   MONGODB_DB: "caas"
   MONGODB_HOST: "mongodb-service"
   MONGODB_PORT: "27017"
-  
+
   # FastAPI Configuration
   FASTAPI_HOST: "fastapi-service"
   FASTAPI_PORT: "8000"
@@ -28,3 +28,7 @@ data:
 
   # Flower Configuration
   FLOWER_URL: "http://flower-service:5555"
+
+  # MinIO Configuration
+  MINIO_URL: "minio-service:9000"
+  MINIO_BUCKET_NAME: "caas-data"
