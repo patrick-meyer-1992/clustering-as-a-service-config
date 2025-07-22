@@ -9,7 +9,7 @@ metadata:
     argocd.argoproj.io/sync-options: Prune=false,RespectIgnoreDifferences=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
 spec:
-  replicas: 1 
+  replicas: 1
   selector:
     matchLabels:
       app: flower
@@ -19,26 +19,33 @@ spec:
         app: flower
     spec:
       containers:
-      - name: flower
-        image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
-        imagePullPolicy: IfNotPresent
-        command: ["celery", "-A", "workers.tasks", "flower", "--port=5555"]
-        envFrom:
-        - configMapRef:
-            name: caas-config
-        env:
-        - name: RABBITMQ_URL
-          value: "amqp://guest:guest@rabbitmq-service:5672/"
-        - name: FLOWER_UNAUTHENTICATED_API
-          value: "true"
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "1000m"
-    
+        - name: flower
+          image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
+          imagePullPolicy: IfNotPresent
+          command:
+            [
+              "celery",
+              "-A",
+              "workers.clustering.worker_tasks",
+              "flower",
+              "--port=5555",
+            ]
+          envFrom:
+            - configMapRef:
+                name: caas-config
+          env:
+            - name: RABBITMQ_URL
+              value: "amqp://guest:guest@rabbitmq-service:5672/"
+            - name: FLOWER_UNAUTHENTICATED_API
+              value: "true"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1000m"
+
 ---
 apiVersion: v1
 kind: Service
