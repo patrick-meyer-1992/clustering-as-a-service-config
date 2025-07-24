@@ -4,6 +4,6 @@ resources:
 images:
 - name: patrickmeyer/caas-api
   newName: patrickmeyer/caas-api
-  newTag: b9f73f3
+  newTag: 8e70aae
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
