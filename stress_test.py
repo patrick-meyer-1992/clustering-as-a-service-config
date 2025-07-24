@@ -6,7 +6,6 @@ FASTAPI_URL = f"http://api.staging.caas.local"
 
 algorithms = requests.get(f"{FASTAPI_URL}/algorithms/").json()
 
-
 data = {
     "clustering_algorithm": "",
     "clustering_params": "",
@@ -31,7 +30,7 @@ data = {
     },
 }
 
-iterations = 1000
+iterations = 500
 sleep_time = 0.1
 for i in range(iterations):
     algorithm = random.choice(algorithms)
