@@ -5,6 +5,6 @@ resources:
 images:
 - name: patrickmeyer/caas-automl-worker
   newName: patrickmeyer/caas-automl-worker
-  newTag: "9777829"
+  newTag: 714009b
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
