@@ -1,6 +1,5 @@
 import requests
 from time import sleep
-import random
 
 FASTAPI_URL = f"http://api.staging.caas.local"
 
