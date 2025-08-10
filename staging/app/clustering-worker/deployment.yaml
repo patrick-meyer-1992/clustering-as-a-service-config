@@ -22,6 +22,19 @@ spec:
       - name: clustering-worker
         image: patrickmeyer/caas-clustering-worker # Will be replaced by kustomize
         imagePullPolicy: IfNotPresent
+        command:
+        [
+          "celery",
+          "-A",
+          "workers.clustering.worker_tasks",
+          "worker",
+          "--loglevel=info",
+          "--concurrency=1",
+          "--max-tasks-per-child=1",
+          "--without-gossip",
+          "--without-mingle",
+          "--task-acks-late"
+        ]
         envFrom:
         - configMapRef:
             name: caas-config
