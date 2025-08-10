@@ -33,7 +33,7 @@ spec:
               "--max-tasks-per-child=1",
               "--without-gossip",
               "--without-mingle",
-              "--task-acks-late",
+              "--acks-late",
             ]
           envFrom:
             - configMapRef:
