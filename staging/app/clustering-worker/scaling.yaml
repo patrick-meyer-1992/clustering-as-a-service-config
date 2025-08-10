@@ -10,7 +10,7 @@ spec:
   cooldownPeriod: 180 # Wait 3 minutes before scaling down
   # idleReplicaCount: 0  # Scale to 0 when no messages
   minReplicaCount: 1 # Minimum pods when scaling
-  maxReplicaCount: 50 # Maximum pods
+  maxReplicaCount: 10 # Maximum pods
   triggers:
     - type: rabbitmq
       metadata:
