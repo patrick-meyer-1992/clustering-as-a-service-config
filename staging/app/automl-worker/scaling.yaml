@@ -7,10 +7,10 @@ spec:
   scaleTargetRef:
     name: automl-worker
   pollingInterval: 10 # Check queue every 10 seconds
-  cooldownPeriod: 180 # Wait 3 minutes before scaling down
+  cooldownPeriod: 60 # Wait 1 minute before scaling down
   # idleReplicaCount: 1  # Scale to 1 when no messages
   minReplicaCount: 1 # Minimum pods when scaling
-  maxReplicaCount: 50 # Maximum pods
+  maxReplicaCount: 25 # Maximum pods
   triggers:
     - type: rabbitmq
       metadata:

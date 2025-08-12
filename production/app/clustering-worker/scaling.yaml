@@ -6,11 +6,11 @@ metadata:
 spec:
   scaleTargetRef:
     name: clustering-worker
-  pollingInterval: 30 # Check queue every 30 seconds
-  cooldownPeriod: 300 # Wait 5 minutes before scaling down
+  pollingInterval: 10 # Check queue every 10 seconds
+  cooldownPeriod: 60 # Wait 1 minute before scaling down
   # idleReplicaCount: 1  # Scale to 1 when no messages
   minReplicaCount: 1 # Minimum pods when scaling
-  maxReplicaCount: 50 # Maximum pods
+  maxReplicaCount: 25 # Maximum pods
   triggers:
     - type: rabbitmq
       metadata:
