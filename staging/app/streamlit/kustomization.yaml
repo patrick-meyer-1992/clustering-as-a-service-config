@@ -4,6 +4,6 @@ resources:
 images:
 - name: patrickmeyer/caas-streamlit
   newName: patrickmeyer/caas-streamlit
-  newTag: 3c5286f
+  newTag: 46e5f6f
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
