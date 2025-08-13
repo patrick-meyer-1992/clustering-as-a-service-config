@@ -28,7 +28,6 @@ spec:
               "-A",
               "workers.clustering.worker_tasks",
               "worker",
-              "--pool=solo",
               "--loglevel=info",
               "--concurrency=1",
               "--max-tasks-per-child=1",
